@@ -1,0 +1,12 @@
+D:\Learn\gomakan\web_gomakan\libs_gomakan\bin\Debug\net5.0\libs_gomakan.deps.json
+D:\Learn\gomakan\web_gomakan\libs_gomakan\bin\Debug\net5.0\libs_gomakan.dll
+D:\Learn\gomakan\web_gomakan\libs_gomakan\bin\Debug\net5.0\ref\libs_gomakan.dll
+D:\Learn\gomakan\web_gomakan\libs_gomakan\bin\Debug\net5.0\libs_gomakan.pdb
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.csproj.AssemblyReference.cache
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.AssemblyInfoInputs.cache
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.AssemblyInfo.cs
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.csproj.CoreCompileInputs.cache
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.dll
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\ref\libs_gomakan.dll
+D:\Learn\gomakan\web_gomakan\libs_gomakan\obj\Debug\net5.0\libs_gomakan.pdb
