@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Detail makan";
+}
+@section Css{
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"rel="stylesheet"/>
+    <style>
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+    </style>
+}
+<div class="container mx-auto mt-20">
+    <div class="w-full md:w-2/3 mx-auto">
+        <div class="bg-white rounded-lg shadow-lg">
+            <img
+                src="@Url.Action("GetImage","Common", new {
+                         image=ViewBag.detail?.Image ?? ""
+                     })"
+                alt="@(ViewBag.detail?.Name ?? "")"
+                class="w-full object-cover rounded-t-lg"
+            />
+            <div class="p-4">
+                <h3 class="text-lg font-medium">@(ViewBag.detail?.Name ?? "-")</h3>
+                <p class="text-gray-600">
+                    @(ViewBag.detail?.Description ?? "-")
+                </p>
+                <p class="font-medium text-lg mt-2">
+                    Rp. @(ViewBag.detail?.Price ?? 0)
+                </p>
+                <hr />
+                <div class="mt-4">
+                  <form action="@Url.Action("TambahKeranjang")" method="post">
+                    <label for="qty" class="text-lg font-medium mt-2">Quantity:</label>
+                    <input type="number" id="qty" name="qty" min="1" class="mt-2 p-2 rounded border border-gray-400" required/>
+                    <input type="hidden" id="idMakanan" name="idMakanan" value="@ViewBag.detail.Id"/>
+                    <input type="submit" value="Tambah" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 mt-4" />
+                  </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

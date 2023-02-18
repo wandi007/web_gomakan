@@ -1,8 +1,99 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Cari makan";
+}
+@section Css{
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"rel="stylesheet"/>
+    <style>
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+    </style>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mx-auto mt-20">
+    <form>
+        <div class="flex items-center">
+            <input type="text" class="p-4 w-full border border-gray-500 rounded-lg"placeholder="Cari makan disini..." name="keyword" id="inputKeyword"
+                   value="@(!string.IsNullOrWhiteSpace(Context.Request.Query["keyword"]) ? Context.Request.Query["keyword"] : "")"/>
+            <button class="bg-blue-500 p-4 rounded-lg text-white">
+                Cari
+            </button>
+        </div>
+    </form>
+    <div class="mt-10">
+        <div class="align-content-center">
+            <h1>Menu</h1>
+            <span>Makan bang...</span>
+        </div>
+        <div class="flex flex-wrap" id="listMakanan">
+
+        </div>
+        <div class="w-full mx-auto mt-2 flex justify-center">
+            <button class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 mt-4" onclick="loadMore()">
+                Load more
+            </button>
+        </div>
+    </div>
 </div>
+@section Scripts
+{
+    <script>
+        let limit = 5, offset =0;
+        renderMakanan()
+        function loadMore(){
+            offset += limit;
+            renderMakanan()
+        }
+        async function getMakanan(limit, offset){
+            let keyword =document.getElementById("inputKeyword").value;
+            return new Promise((resolve, reject)=>{
+               fetch("@Url.Action("ListMakanan", "Home")?"+new URLSearchParams({
+                   keyword: keyword,
+                   limit:limit,
+                   offset:offset
+               }))
+               .then((response)=>response.json())
+               .then((data) => resolve(data))
+               .catch((e)=>reject(e)); 
+            }) 
+        }
+        
+        async function renderMakanan(){
+            await getMakanan(limit,offset)
+            .then((data)=>{
+                let componentListMakanan = document.getElementById("listMakanan");
+                data.map((item, index)=>{
+                    let card = document.createElement("div");
+                    card.className="w-full md:w-1/3 p-4";
+
+                    let html = `<a href="detail/${item?.id}" class="card hover:no-underline">
+                                    <div class="bg-white rounded-lg shadow-lg">
+                                        <img
+                                            src="common/get-img/${item?.image}"
+                                            alt="${item?.name ?? "-"}"
+                                            class="w-full h-64 object-cover rounded-t-lg"
+                                        />
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-medium">${item?.name ?? "-"}</h3>
+                                            <p class="text-gray-600">
+                                                ${item?.description ?? "-"}
+                                            </p>
+                                            <p class="font-medium text-lg mt-2">
+                                                Rp. ${item?.price ?? 0}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>`
+                    card.innerHTML = html;
+                    componentListMakanan.appendChild(card)
+                })
+                
+            }).catch((e)=>{
+                console.log(e)
+            })
+        }
+    </script>
+}

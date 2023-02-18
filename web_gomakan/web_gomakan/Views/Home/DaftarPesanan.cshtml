@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Daftar Pesanan";
+}
+@section Css{
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"rel="stylesheet"/>
+}
+<div class="container mx-auto mt-20">
+  <table class="w-full md:w-2/3 mx-auto bg-white rounded-lg shadow-lg">
+    <thead class="text-lg font-medium">
+    <tr class="bg-indigo-500 text-white">
+      <th class="p-4">Produk</th>
+      <th class="p-4">Harga</th>
+      <th class="p-4">Quantity</th>
+      <th class="p-4">Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in ViewBag.pesanan)
+    {
+      <tr class="border-b border-gray-400">
+        <td class="p-4">@(item?.Makanan?.Name ?? "")</td>
+        <td class="p-4">Rp. @(item?.Makanan?.Price ?? "")</td>
+        <td class="p-4">@(item?.Qty ?? "")</td>
+        <td class="p-4">Rp. @(item?.Total ?? "")</td>
+      </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr class="text-lg font-medium">
+      <td class="p-4" colspan="3">Total</td>
+      <td class="p-4">Rp. @(ViewBag.TotalPesanan)</td>
+    </tr>
+    </tfoot>
+  </table>
+  <div class="w-full md:w-2/3 mx-auto">
+    <a href="@Url.Action("CheckoutPesanan","Home")" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 mt-4">Submit Pesanan</a>
+  </div>
+</div>

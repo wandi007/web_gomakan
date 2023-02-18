@@ -56,3 +56,10 @@ D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Microsoft.Extensions.D
 D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\Learn\gomakan\web_gomakan\web_gomakan\obj\Debug\net5.0\Razor\Views\Home\Detail.cshtml.g.cs
+D:\Learn\gomakan\web_gomakan\web_gomakan\obj\Debug\net5.0\Razor\Views\Home\DaftarPesanan.cshtml.g.cs
+D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Learn\gomakan\web_gomakan\web_gomakan\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\Learn\gomakan\web_gomakan\web_gomakan\obj\Debug\net5.0\Razor\Views\Home\CheckoutPesanan.cshtml.g.cs

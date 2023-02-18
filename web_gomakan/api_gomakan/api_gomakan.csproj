@@ -7,17 +7,23 @@
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Npgsql" Version="5.0.10" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\libs_gomakan\libs_gomakan.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="asset\img" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Daftar Pesanan";
+}
+@section Css{
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"rel="stylesheet"/>
+}
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+      <thead>
+      <tr class="bg-indigo-500 text-xs font-semibold tracking-wide text-left text-white uppercase border-b">
+        <th class="px-4 py-3">Produk</th>
+        <th class="px-4 py-3">Jumlah</th>
+        <th class="px-4 py-3">Harga</th>
+        <th class="px-4 py-3">Total</th>
+      </tr>
+      </thead>
+      <tbody class="bg-white divide-y">
+      @foreach (var item in ViewBag.pesanan)
+      {
+        <tr class="text-gray-700">
+          <td class="px-4 py-3">
+            <div class="flex items-center text-sm">
+              <div>
+                <p class="font-semibold">@(item?.Makanan?.Name ?? "")</p>
+              </div>
+            </div>
+          </td>
+          <td class="px-4 py-3">Rp. @(item?.Makanan?.Price ?? "")</td>
+          <td class="px-4 py-3">@(item?.Qty ?? "")</td>
+          <td class="px-4 py-3">Rp. @(item?.Total ?? "")</td>
+        </tr>
+      }
+      </tbody>
+      <tfoot>
+      <tr class="text-lg font-medium border-b text-white bg-indigo-500">
+        <td class="py-3 px-4" colspan="3">Total</td>
+        <td class="py-3 px-4">Rp. @(ViewBag?.TotalPesanan ?? "")</td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="px-4 py-3 bg-gray-50 text-right">
+    <form action="@Url.Action("Bayar","Home")" method="post" id="formPembayaran">
+      <p class="font-semibold inline-block">Jumlah Pembayaran:</p>
+      <input
+        id="inputTotalPembayaran"
+        name="totalPembayaran"
+        type="number"
+        class="inline-block w-1/4 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:ring"
+        placeholder="Masukkan jumlah pembayaran"
+        required="required"
+        min="@(ViewBag?.TotalPesanan ?? 0)"
+      />
+      <button type="button" id="submitPembayaran" onclick="checkOut()" class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Submit Pembayaran
+      </button>
+    </form>
+  </div>
+</div>
+
+@section Scripts
+{
+  <script type="text/javascript">
+  function checkOut(){
+    let inputTotalPembayaran  = document.getElementById("inputTotalPembayaran").value;
+    let formPembayaran = document.getElementById("formPembayaran");
+    if (validatePembayaran())
+      if (confirm(`Total pembayaran ${inputTotalPembayaran}, apa anda ingin melanjutkan pembayaran ?`) == true ) formPembayaran.submit()
+       
+  }
+  function validatePembayaran(){
+    let totalPembayaran = document.getElementById("inputTotalPembayaran").value;
+    if(totalPembayaran == @ViewBag?.TotalPesanan){
+      return true
+    }
+    alert("Total pembayaran harus @ViewBag?.TotalPesanan");
+    return false
+  }
+  </script>
+}
